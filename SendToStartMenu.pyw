@@ -49,7 +49,7 @@ bundled = getattr(sys, 'frozen', False)
 
 if no_input:
 	# Set paths for program file.
-	response = win32gui.MessageBox(0, "Create a shortcut in your 'Send to' menu?", "SendToStartMenu", win32con.MB_YESNO | win32con.MB_ICONQUESTION)
+	response = win32gui.MessageBox(0, "Create a shortcut in your 'Send to' menu?", "Send to Start Menu", win32con.MB_YESNO | win32con.MB_ICONQUESTION)
 	if response == win32con.IDNO:
 		sys.exit()
 
@@ -63,7 +63,7 @@ else:
 
 	# Make sure input file exists.
 	if not pathlib.Path(file_path).is_file():
-		win32gui.MessageBox(0, "Input file doesn't exist.", "SendToStartMenu", win32con.MB_ICONERROR)
+		win32gui.MessageBox(0, "Input file doesn't exist.", "Send to Start Menu", win32con.MB_ICONERROR)
 		sys.exit()
 
 	startmenu_path = pathlib.Path(shell.SpecialFolders("StartMenu"), "Programs")
@@ -73,9 +73,9 @@ else:
 # Check if shortcut already exists.
 if pathlib.Path(dest_path).is_file():
 	if no_input:
-		response = win32gui.MessageBox(0, "Shortcut already exists in 'Send to' menu. Overwrite?", "SendToStartMenu", win32con.MB_YESNO | win32con.MB_ICONWARNING)
+		response = win32gui.MessageBox(0, "Shortcut already exists in 'Send to' menu. Overwrite?", "Send to Start Menu", win32con.MB_YESNO | win32con.MB_ICONWARNING)
 	else:
-		response = win32gui.MessageBox(0, f"Shortcut \"{program_name}\" already exists. Overwrite?", "SendToStartMenu", win32con.MB_YESNO | win32con.MB_ICONWARNING)
+		response = win32gui.MessageBox(0, f"Shortcut \"{program_name}\" already exists. Overwrite?", "Send to Start Menu", win32con.MB_YESNO | win32con.MB_ICONWARNING)
 
 	if response == win32con.IDNO:
 		sys.exit()
@@ -95,6 +95,6 @@ else:
 shortcut.save()
 
 if len(sys.argv) == 1:
-	win32gui.MessageBox(0, "Successfully added to 'Send to' menu!", "SendToStartMenu", win32con.MB_ICONINFORMATION)
+	win32gui.MessageBox(0, "Successfully added to 'Send to' menu!", "Send to Start Menu", win32con.MB_ICONINFORMATION)
 else:
-	win32gui.MessageBox(0, f"Successfully added shortcut \"{program_name}\"!", "SendToStartMenu", win32con.MB_ICONINFORMATION)
+	win32gui.MessageBox(0, f"Successfully added shortcut \"{program_name}\"!", "Send to Start Menu", win32con.MB_ICONINFORMATION)
