@@ -36,7 +36,7 @@ pythonw SendToStartMenu.pyw
 
 From there, it will work exactly like the bundled EXE version.
 
-However, an important note is that **the program won't work running under the Windows Store version of Python**, since that version is unable to access the user's AppData folder (which is where the Send To menu and Start menu shortcuts are stored).
+However, an important note is that **the program won't work running under the Windows Store version of Python**, since that version is unable to access the user's Local AppData folder (which is where the Start menu shortcuts are stored).
 
 ## Building the EXE
 
