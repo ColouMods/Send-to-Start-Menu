@@ -6,7 +6,7 @@
 
 ## Download
 
-A bundled EXE file can be found on the [Releases page](https://github.com/ColouMods/SendToStartMenu/releases).
+A bundled EXE file can be found on the [Releases page](https://github.com/ColouMods/Send-to-Start-Menu/releases).
 
 ### Usage
 
@@ -45,7 +45,7 @@ You will need to install [PyInstaller](https://pyinstaller.org/) in order to cre
 pip install pyinstaller
 ```
 
-The bundled EXE in [Releases](https://github.com/ColouMods/SendToStartMenu/releases) is built with the following command:
+The bundled EXE in [Releases](https://github.com/ColouMods/Send-to-Start-Menu/releases) is built with the following command:
 ```
 pyinstaller --onefile --icon=icon.ico SendToStartMenu.pyw
 ```
