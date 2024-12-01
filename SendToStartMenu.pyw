@@ -44,8 +44,8 @@ def sanitise_program_name(name):
 	return new_name
 
 shell = win32com.client.Dispatch("WScript.Shell")
-no_input = len(sys.argv) == 1
 bundled = getattr(sys, 'frozen', False)
+no_input = len(sys.argv) == 1
 
 if no_input:
 	# Set paths for program file.
@@ -85,7 +85,8 @@ if pathlib.Path(dest_path).is_file():
 shortcut = shell.CreateShortCut(dest_path)
 
 if no_input and not bundled:
-	shortcut.IconLocation = str(pathlib.Path("icon.ico").resolve())
+	folder_path = str(pathlib.Path(file_path).parent)
+	shortcut.IconLocation = str(pathlib.Path(folder_path, "icon.ico"))
 	shortcut.TargetPath = sys.executable
 	shortcut.Arguments = f"\"{file_path}\""
 else:
