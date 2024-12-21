@@ -70,6 +70,8 @@ else:
 	program_name = sanitise_program_name(get_program_name(file_path))
 	dest_path = str(pathlib.Path(startmenu_path, program_name)) + ".lnk"
 
+folder_path = str(pathlib.Path(file_path).parent)
+
 # Check if shortcut already exists.
 if pathlib.Path(dest_path).is_file():
 	if no_input:
@@ -85,14 +87,15 @@ if pathlib.Path(dest_path).is_file():
 shortcut = shell.CreateShortCut(dest_path)
 
 if no_input and not bundled:
-	folder_path = str(pathlib.Path(file_path).parent)
 	shortcut.IconLocation = str(pathlib.Path(folder_path, "icon.ico"))
 	shortcut.TargetPath = sys.executable
 	shortcut.Arguments = f"\"{file_path}\""
 else:
 	shortcut.IconLocation = file_path
 	shortcut.TargetPath = file_path
-	
+
+shortcut.WorkingDirectory = folder_path
+
 shortcut.save()
 
 if len(sys.argv) == 1:
